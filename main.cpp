@@ -210,14 +210,20 @@ int main(int argc, char** argv){
             output.append("No movies found with prefix ").append(prefixes[i]).append("\n");
             //cout << "No movies found with prefix " << prefixes[i] << "\n";
         } else {
-            auto highest = pre.top();
-            while (!pre.empty()) {
+            int sizeA = pre.size();
+            int i = 0;
+            vector<pair<double, string>> temp(sizeA);
+            while (i<sizeA) {
                 string s = to_string(pre.top().first);
                 output.append(pre.top().second).append(", ").append(s.substr(0, s.find('.') + 2)).append("\n");
                 //cout << pre.top().second << ", " << pre.top().first << "\n";
+                temp[i] = pre.top();
                 pre.pop();
+                i++;
             }
-            pre.push(highest);
+            for (auto m : temp) {
+                pre.push(m);
+            }
             output.append("\n");
             //cout << "\n";
         }
