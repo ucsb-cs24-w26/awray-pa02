@@ -235,7 +235,7 @@ int main(int argc, char** argv){
         }
         else if (best.empty()) {
             //cout << "No movies found with prefix " << prefixes[i] << "\n";
-            output.append("No movies found with prefix ").append(prefixes[i]).append("\n");
+            //output.append("No movies found with prefix ").append(prefixes[i]).append("\n");
         } else {
             (*speedyNodeByIndex[i]).active = false;
             string s = to_string(best.top().first);
