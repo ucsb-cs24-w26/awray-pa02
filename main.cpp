@@ -102,11 +102,20 @@ int main(int argc, char** argv){
 
     const int prefixCount = prefixes.size();
 
+    struct Compare {
+    bool operator()(const pair<double, string>& a, const pair<double, string>& b) {
+        if (a.first == b.first) {
+            return a.second > b.second; // string
+        }
+        return a.first < b.first; // double
+    }
+    };
+
     struct speedyStructNode {
 
         bool active;
         bool isLeaf;
-        priority_queue<pair<double, string>> movies;
+        priority_queue<pair<double, string>, vector<pair<double, string>>, Compare> movies;
         string duplicateOutput;
 
         speedyStructNode(const bool& isEnd) {
